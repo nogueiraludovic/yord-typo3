@@ -1,0 +1,10 @@
+<f:for each="{main}" as="menu" iteration="menuIteration">
+    <li class="nav-item hs-has-sub-menu u-header__nav-item{f:if(condition: '{menu.active}', then: ' active')}"
+        data-event="hover"
+        data-animation-in="fadeInUp"
+        data-animation-out="fadeOut">
+        <f:link.typolink parameter="{menu.link}" target="{menu.target}" title="{menu.title}" class="nav-link u-header__nav-link">
+            {menu.title}
+        </f:link.typolink>
+    </li>
+</f:for>

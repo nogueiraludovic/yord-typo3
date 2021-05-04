@@ -26,6 +26,17 @@ page {
         }
 
 
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
+                levels = 5
+                special = directory
+                special.value = 2
+                includeSpacer = 1
+                as = main
+            }
+        }
+
         variables {
             content = CONTENT
             content {
@@ -39,4 +50,8 @@ page {
         }
 
     }
+}
+
+plugin.tx_vhs.assets {
+	mergedAssetsUseHashedFilename = 1
 }
