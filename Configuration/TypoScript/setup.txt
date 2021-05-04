@@ -1,0 +1,42 @@
+page = PAGE
+page {
+    10 = FLUIDTEMPLATE
+    10 {
+        layoutRootPaths {
+            10 = EXT:yord/Resources/Private/Layouts
+        }
+        partialRootPaths {
+            10 = EXT:yord/Resources/Private/Partials
+        }
+        templateRootPaths {
+            10 = EXT:yord/Resources/Private/Templates
+        }
+
+        templateName = TEXT
+        templateName {
+            stdWrap.cObject = CASE
+            stdWrap.cObject {
+                default = TEXT
+                default.value = Standard.html
+
+                key {
+                    data = pagelayout
+                }
+            }
+        }
+
+
+        variables {
+            content = CONTENT
+            content {
+                table = tt_content
+                select {
+                    orderBy = sorting
+                    where = {#colPos}=0
+                    languageField = sys_language_uid
+                }
+            }
+        }
+
+    }
+}
