@@ -3,10 +3,13 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-
     <f:render partial="Structure/Assets" arguments="{_all}" />
     <f:render partial="Structure/Header" arguments="{_all}" />
-    Ma super page
+
+    <f:render partial="Content/Header" arguments="{_all}" />
+
     <f:format.raw>{content}</f:format.raw>
+
+    <f:render partial="Structure/Footer" arguments="{_all}" />
 </f:section>
 </html>

@@ -25,7 +25,6 @@ page {
             }
         }
 
-
         dataProcessing {
             10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
             10 {
@@ -47,11 +46,24 @@ page {
                     languageField = sys_language_uid
                 }
             }
-        }
 
+            header < .content
+            header.select.where = {#colPos}=10
+        }
     }
 }
 
-plugin.tx_vhs.assets {
-	mergedAssetsUseHashedFilename = 1
+lib.contentElement {
+    templateRootPaths {
+        20 = EXT:yord/Resources/Private/Templates/Extensions/FluidStyledContent
+    }
+    partialRootPaths {
+        20 = EXT:yord/Resources/Private/Partials/Extensions/FluidStyledContent
+    }
+}
+
+plugin {
+    tx_vhs.assets {
+        mergedAssetsUseHashedFilename = 1
+    }
 }

@@ -1,0 +1,24 @@
+mod.web_layout.BackendLayouts {
+    standard {
+        title = Standard
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 2
+                rows {
+                    1.columns.1 {
+                        name = En-tête
+                        colPos = 10
+                        colspan = 1
+                        allowed.CType = textmedia
+                    }
+                    2 < .1
+                    2.columns.1 {
+                        name = Contenu principal
+                        colPos = 0
+                    }
+                }
+            }
+        }
+    }
+}
