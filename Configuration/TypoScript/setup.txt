@@ -34,6 +34,12 @@ page {
                 includeSpacer = 1
                 as = main
             }
+
+            20 < .10
+            20 {
+                special.value = 9
+                as = footer
+            }
         }
 
         variables {

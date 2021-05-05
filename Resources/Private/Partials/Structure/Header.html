@@ -10,18 +10,13 @@
 <header id="header" class="u-header u-header--modern u-header--bordered u-header--sticky-top-lg">
     <div class="u-header__section">
         <div id="logoAndNav" class="container-fluid">
-            <!-- Nav -->
             <nav class="js-mega-menu navbar navbar-expand-lg u-header__navbar">
-                <!-- Logo -->
                 <div class="u-header__navbar-brand-wrapper">
-                    <a class="navbar-brand u-header__navbar-brand" href="index.html" aria-label="Space">
+                    <f:link.typolink parameter="1" class="navbar-brand u-header__navbar-brand" additionalAttributes="{ariaLabel: 'Accueil'}">
                         <f:image src="EXT:yord/Resources/Public/Images/logo.png" class="u-header__navbar-brand-default" alt="Logo" width="133" height="25" />
                         <f:image src="EXT:yord/Resources/Public/Images/logo-short.png" class="u-header__navbar-brand-mobile" alt="Logo" width="133" height="25" />
-                    </a>
+                    </f:link.typolink>
                 </div>
-                <!-- End Logo -->
-
-                <!-- Responsive Toggle Button -->
                 <button type="button" class="navbar-toggler btn u-hamburger u-header__hamburger"
                         aria-label="Toggle navigation"
                         aria-expanded="false"
@@ -30,12 +25,9 @@
                         data-target="#navBar">
                     <span class="d-none d-sm-inline-block">Menu</span>
                     <span id="hamburgerTrigger" class="u-hamburger__box ml-3">
-              <span class="u-hamburger__inner"></span>
-            </span>
+                        <span class="u-hamburger__inner"></span>
+                    </span>
                 </button>
-                <!-- End Responsive Toggle Button -->
-
-                <!-- Navigation -->
                 <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse py-0">
                     <ul class="navbar-nav u-header__navbar-nav">
 

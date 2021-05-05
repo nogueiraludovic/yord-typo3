@@ -1,4 +1,6 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 <f:section name="Header">
 
@@ -10,16 +12,20 @@
 <f:section name="Main">
     <f:if condition="{data.colPos} == 10">
         <f:then>
-            <div class="gradient-overlay-half-dark-v1 bg-img-hero" style="background-image: url(../../assets/img/1920x1080/img5.jpg);">
-                <div class="d-lg-flex align-items-lg-center flex-lg-column">
-                    <div class="container space-3 space-4-top--lg">
-                        <div class="w-md-50">
-                            <h1 class="display-4 font-size-48--md-down text-white">{data.header}</h1>
-                            <p class="lead text-white">{data.subheader}</p>
+            <f:for each="{vhs:content.resources.fal(uid: '{data.uid}')}" as="image" iteration="imageIterator">
+                <f:if condition="{imageIterator.isFirst}">
+                    <div class="gradient-overlay-half-dark-v1 bg-img-hero" style="background-image: url('{f:image.url(src: \'{image.url}\')}');">
+                        <div class="d-lg-flex align-items-lg-center flex-lg-column">
+                            <div class="container space-3 space-4-top--lg">
+                                <div class="w-md-50">
+                                    <h1 class="display-4 font-size-48--md-down text-white">{data.header}</h1>
+                                    <p class="lead text-white">{data.subheader}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </f:if>
+            </f:for>
         </f:then>
         <f:else>
             <div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
