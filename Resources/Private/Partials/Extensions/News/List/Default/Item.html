@@ -1,0 +1,24 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+<article class="card mb-3">
+    <f:if condition="{newsItem.falMedia}">
+        <f:then>
+            <f:for each="{newsItem.falMedia}" as="image" iteration="i">
+                <f:if condition="{i.isFirst}">
+                    <f:image image="{image}" class="card-img-top" width="357c" height="273c" />
+                </f:if>
+            </f:for>
+        </f:then>
+    </f:if>
+    <div class="card-body p-5">
+        <small class="d-block text-muted mb-2"><f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date></small>
+        <h3 class="h5">
+            {newsItem.title}
+        </h3>
+        <f:format.raw>{newsItem.teaser}</f:format.raw>
+    </div>
+</article>
+</n:link>
+</html>

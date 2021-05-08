@@ -1,0 +1,12 @@
+TCEFORM {
+    tt_content {
+        layout {
+            types {
+                text {
+                    addItems.10 = Erreur
+                    keepItems = 0, 10
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+<article class="card rounded mb-5">
+    <div class="card-body row align-items-stretch no-gutters p-0">
+        <div class="col-7">
+            <div class="p-5">
+                <h2 class="h5 mb-3">
+                    {newsItem.title}
+                </h2>
+                <f:format.raw>{newsItem.teaser}</f:format.raw>
+            </div>
+        </div>
+        <f:if condition="{newsItem.falMedia}">
+            <f:then>
+                <f:for each="{newsItem.falMedia}" as="image" iteration="i">
+                    <f:if condition="{i.isFirst}">
+                        <div class="col-5 card-img-right d-none d-inline-block bg-img-hero" data-bg-img-src="{f:uri.image(image: '{image}', width: '224c', height: '194c')}" style="background-image: url(&quot;{f:uri.image(image: '{image}', width: '224c', height: '194c')}&quot;);"></div>
+                    </f:if>
+                </f:for>
+            </f:then>
+        </f:if>
+    </div>
+</article>
+</n:link>
+</html>

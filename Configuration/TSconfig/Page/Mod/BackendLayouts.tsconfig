@@ -21,4 +21,9 @@ mod.web_layout.BackendLayouts {
             }
         }
     }
+
+    error < .standard
+    error {
+        title = Erreur
+    }
 }

@@ -10,6 +10,11 @@
 
 </f:section>
 <f:section name="Main">
+    <f:if condition="{data.colPos} != 10">
+    <f:render section="Header" optional="true">
+        <f:render partial="Header/All" arguments="{_all}" />
+    </f:render>
+    </f:if>
     <f:if condition="{data.colPos} == 10">
         <f:then>
             <f:for each="{vhs:content.resources.fal(uid: '{data.uid}')}" as="image" iteration="imageIterator">

@@ -19,6 +19,9 @@ page {
                 default = TEXT
                 default.value = Standard.html
 
+                pagets__error < .default
+                pagets__error.value = Error.html
+
                 key {
                     data = pagelayout
                 }
@@ -60,6 +63,9 @@ page {
 }
 
 lib.contentElement {
+    layoutRootPaths {
+        20 = EXT:yord/Resources/Private/Layouts/Extensions/FluidStyledContent
+    }
     templateRootPaths {
         20 = EXT:yord/Resources/Private/Templates/Extensions/FluidStyledContent
     }
@@ -71,5 +77,14 @@ lib.contentElement {
 plugin {
     tx_vhs.assets {
         mergedAssetsUseHashedFilename = 1
+    }
+
+    tx_news.view {
+        partialRootPaths {
+            20 = EXT:yord/Resources/Private/Partials/Extensions/News
+        }
+        templateRootPaths {
+            20 = EXT:yord/Resources/Private/Templates/Extensions/News
+        }
     }
 }

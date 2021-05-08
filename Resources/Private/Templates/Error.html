@@ -9,9 +9,15 @@
     <f:render partial="Content/Header" arguments="{_all}" />
 
     <main id="content">
-        <!--TYPO3SEARCH_begin-->
-        <f:format.raw>{content}</f:format.raw>
-        <!--TYPO3SEARCH_end-->
+        <div class="bg-gray-100">
+            <div class="d-flex align-items-center height-100vh">
+                <div class="container text-center">
+                    <div class="w-lg-60 mx-lg-auto">
+                        <f:format.raw>{content}</f:format.raw>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <f:render partial="Structure/Footer" arguments="{_all}" />

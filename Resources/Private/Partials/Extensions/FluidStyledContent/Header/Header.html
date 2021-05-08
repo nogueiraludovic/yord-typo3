@@ -1,8 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:if condition="{header}">
-    <f:switch expression="{layout}">
+    <f:switch expression="{header_layout}">
         <f:case value="1">
-            <h1 class="{positionClass}">
+            <h1 class="{positionClass}{f:if(condition: '{layout} == \'10\'', then: ' display-3 font-size-48--md-down font-weight-medium mb-3')}">
                 <f:link.typolink parameter="{link}">{header}</f:link.typolink>
             </h1>
         </f:case>

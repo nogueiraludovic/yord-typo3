@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<!--TYPO3SEARCH_end-->
+<f:if condition="{news}">
+    <f:then>
+        <f:if condition="{settings.templateLayout} == 1">
+            <f:then>
+                <f:render partial="List/Small/List" arguments="{_all}" />
+            </f:then>
+            <f:else>
+                <f:render partial="List/Default/List" arguments="{_all}" />
+            </f:else>
+        </f:if>
+    </f:then>
+</f:if>
+<!--TYPO3SEARCH_begin-->
+</html>

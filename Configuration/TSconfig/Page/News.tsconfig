@@ -1,0 +1,4 @@
+tx_news.templateLayouts {
+    1 = Petit listing
+    2 = Listing complet
+}
