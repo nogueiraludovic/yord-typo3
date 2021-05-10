@@ -1,5 +1,19 @@
 TCEFORM {
     tt_content {
+        imageborder.disabled = true
+        image_zoom.disabled = true
+        space_before_class.disabled = true
+        space_after_class.disabled = true
+        editlock.disabled = true
+        categories.disabled = true
+        rowDescription.disabled = true
+        header_link.disabled = true
+        header_position.disabled = true
+        date.disabled = true
+        linkToTop.disabled = true
+        sectionIndex.disabled = true
+        fe_group.disabled = true
+
         layout {
             types {
                 text {
@@ -8,5 +22,22 @@ TCEFORM {
                 }
             }
         }
+    }
+
+    tx_news_domain_model_news {
+        archive.disabled = true
+        content_elements.disabled = true
+        related.disabled = true
+        related_from.disabled = true
+        related_links.disabled = true
+        tags.disabled = true
+        author.disabled = true
+        author_email.disabled = true
+        sitemap_changefreq.disabled = true
+        sitemap_priority.disabled = true
+        fe_group.disabled = true
+        editlock.disabled = true
+        notes.disabled = true
+        istopnews.disabled = true
     }
 }

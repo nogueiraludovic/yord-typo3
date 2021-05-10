@@ -11,15 +11,15 @@
 </f:section>
 <f:section name="Main">
     <f:if condition="{data.colPos} != 10">
-    <f:render section="Header" optional="true">
-        <f:render partial="Header/All" arguments="{_all}" />
-    </f:render>
+        <f:render section="Header" optional="true">
+            <f:render partial="Header/All" arguments="{_all}" />
+        </f:render>
     </f:if>
     <f:if condition="{data.colPos} == 10">
         <f:then>
-            <f:for each="{vhs:content.resources.fal(uid: '{data.uid}')}" as="image" iteration="imageIterator">
+            <f:for each="{vhs:content.resources.fal(uid: '{data.uid}', field: 'assets')}" as="image" iteration="imageIterator">
                 <f:if condition="{imageIterator.isFirst}">
-                    <div class="gradient-overlay-half-dark-v1 bg-img-hero" style="background-image: url('{f:image.url(src: \'{image.url}\')}');">
+                    <div class="gradient-overlay-half-dark-v1 bg-img-hero" style="background-image: url({f:uri.image(src: image.id, width: '1900c', height: '453c')});">
                         <div class="d-lg-flex align-items-lg-center flex-lg-column">
                             <div class="container space-3 space-4-top--lg">
                                 <div class="w-md-50">
@@ -64,7 +64,5 @@
             </div>
         </f:else>
     </f:if>
-
-
 </f:section>
 </html>
