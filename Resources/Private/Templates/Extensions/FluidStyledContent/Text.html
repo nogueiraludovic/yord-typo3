@@ -2,9 +2,7 @@
 <f:layout name="Default" />
 <f:section name="Main">
 
-    <f:render section="Header" optional="true">
-        <f:render partial="Header/All" arguments="{_all}" />
-    </f:render>
+    <f:render partial="Header/All" arguments="{_all}" />
 
     <f:format.html>{data.bodytext}</f:format.html>
 
