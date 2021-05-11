@@ -16,19 +16,35 @@
             <div class="col-6 offset-md-6 offset-lg-4 col-md-3 col-lg-2 order-lg-6 mb-7 mb-lg-0">
 
                 <div class="list-group list-group-flush list-group-transparent">
-                    <a class="list-group-item list-group-item-action" href="#">
-                        <i class="fab fa-facebook-f min-width-3 text-center mr-2"></i>
-                        Facebook
-                    </a>
-                    <a class="list-group-item list-group-item-action" href="#">
-                        <i class="fab fa-twitter min-width-3 text-center mr-2"></i>
-                        Twitter
-                    </a>
+                    <f:if condition="{settings.socials.facebook}">
+                        <f:link.typolink parameter="{settings.socials.facebook}" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="fab fa-facebook-f min-width-3 text-center mr-2"></i>
+                            Facebook
+                        </f:link.typolink>
+                    </f:if>
+                    <f:if condition="{settings.socials.twitter}">
+                        <f:link.typolink parameter="{settings.socials.twitter}" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="fab fa-twitter min-width-3 text-center mr-2"></i>
+                            Twitter
+                        </f:link.typolink>
+                    </f:if>
+                    <f:if condition="{settings.socials.instagram}">
+                        <f:link.typolink parameter="{settings.socials.instagram}" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="fab fa-instagram min-width-3 text-center mr-2"></i>
+                            Instagram
+                        </f:link.typolink>
+                    </f:if>
+                    <f:if condition="{settings.socials.linkedin}">
+                        <f:link.typolink parameter="{settings.socials.linkedin}" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="fab fa-linkedin min-width-3 text-center mr-2"></i>
+                            Linkedin
+                        </f:link.typolink>
+                    </f:if>
                 </div>
             </div>
 
             <div class="col-lg-4 order-lg-1 d-flex align-items-start flex-column">
-                <f:link.typolink parameter="1" class="d-inline-block mb-5" additionalAttributes="{ariaLabel: 'Yord'}">
+                <f:link.typolink parameter="1" class="d-inline-block mb-5" additionalAttributes="{ariaLabel: 'yord'}">
                     <f:image src="EXT:yord/Resources/Public/Images/logo-short.png" alt="Logo" width="40" height="40" />
                 </f:link.typolink>
             </div>
@@ -37,7 +53,81 @@
 </footer>
 
 <f:asset.script identifier="jquery" src="EXT:yord/Resources/Public/Vendor/jquery/dist/jquery.min.js" />
+<f:asset.script identifier="jquery-migrate" src="EXT:yord/Resources/Public/Vendor/jquery-migrate/dist/jquery-migrate.min.js" />
+<f:asset.script identifier="popper" src="EXT:yord/Resources/Public/Vendor/popper.js/dist/umd/popper.min.js" />
 <f:asset.script identifier="bootstrap" src="EXT:yord/Resources/Public/Vendor/bootstrap/bootstrap.min.js" />
 <f:asset.script identifier="themeJS" src="EXT:yord/Resources/Public/JavaScript/theme.min.js" />
+<f:asset.script identifier="megaMenu" src="EXT:yord/Resources/Public/Vendor/hs-megamenu/src/hs.megamenu.js" />
+
+<f:comment><script src="../../assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="../../assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../assets/vendor/custombox/dist/custombox.min.js"></script>
+<script src="../../assets/vendor/custombox/dist/custombox.legacy.min.js"></script>
+<script src="../../assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+<script src="../../assets/vendor/dzsparallaxer/dzsparallaxer.js"></script></f:comment>
+
+<a class="js-go-to u-go-to" href="javascript:;"
+   data-position='{"bottom": 15, "right": 15 }'
+   data-type="fixed"
+   data-offset-top="400"
+   data-compensation="#header"
+   data-show-effect="slideInUp"
+   data-hide-effect="slideOutDown">
+    <i class="fa fa-arrow-up u-go-to__inner"></i>
+</a>
+<f:asset.script identifier="inline">
+    $(window).on('load', function () {
+        // initialization of HSMegaMenu component
+        $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 991,
+            hideTimeOut: 0
+        });
+    });
+
+    $(document).on('ready', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#header'));
+
+        // initialization of unfold component
+        $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+            afterOpen: function () {
+                if (!$('body').hasClass('IE11')) {
+                    $(this).find('input[type="search"]').focus();
+                }
+            }
+        });
+
+        // initialization of form validation
+        $.HSCore.components.HSValidation.init('.js-validate', {
+            rules: {
+                confirmPassword: {
+                    equalTo: '#password'
+                }
+            }
+        });
+
+        // initialization of forms
+        $.HSCore.helpers.HSFocusState.init();
+
+        // initialization of malihu scrollbar
+        $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
+
+        // initialization of autonomous popups
+        $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-signup-modal', {
+            autonomous: true
+        });
+
+        // initialization of show animations
+        $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+        // initialization of fancybox
+        $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+    });
+</f:asset.script>
 
 </html>

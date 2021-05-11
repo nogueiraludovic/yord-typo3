@@ -1,7 +1,7 @@
 <f:for each="{second}" as="menu">
     <li class="dropdown-item">
-        <a class="nav-link u-header__sub-menu-nav-link" aria-haspopup="true" aria-expanded="false">
-            Classic
-        </a>
+        <f:link.typolink parameter="{menu.link}" target="{menu.target}" title="{menu.title}" class="nav-link u-header__sub-menu-nav-link" additionalAttributes="{aria-haspopup: 'true', aria-expanded: 'false'}">
+            {menu.title}
+        </f:link.typolink>
     </li>
 </f:for>

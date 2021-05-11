@@ -43,6 +43,12 @@ page {
                 special.value = 9
                 as = footer
             }
+
+            30 < .20
+            30 {
+                special.value = 20
+                as = secondary
+            }
         }
 
         variables {
@@ -58,6 +64,15 @@ page {
 
             header < .content
             header.select.where = {#colPos}=10
+        }
+
+        settings {
+            socials {
+                facebook = https://www.facebook.com
+                twitter = https://www.twitter.com
+                linkedin = https://www.linkedin.com
+                instagram = https://www.instagram.com
+            }
         }
     }
 }

@@ -1,0 +1,39 @@
+<f:if condition="{secondary}">
+   <ul class="header-secondary">
+      <f:for each="{secondary}" as="menu" iteration="menuIteration">
+         <li>
+            <f:link.typolink parameter="{menu.link}" target="{menu.target}" title="{menu.title}" additionalAttributes="{aria-haspopup: 'true', aria-expanded: 'false'}">
+               {menu.title}
+            </f:link.typolink>
+         </li>
+      </f:for>
+      <f:if condition="{settings.socials.facebook}">
+         <li class="socials">
+            <f:link.typolink parameter="{settings.socials.facebook}" target="_blank">
+               <i class="fab fa-facebook-f"></i>
+            </f:link.typolink>
+         </li>
+      </f:if>
+      <f:if condition="{settings.socials.twitter}">
+         <li class="socials">
+            <f:link.typolink parameter="{settings.socials.twitter}" target="_blank">
+               <i class="fab fa-twitter"></i>
+            </f:link.typolink>
+         </li>
+      </f:if>
+      <f:if condition="{settings.socials.instagram}">
+         <li class="socials">
+            <f:link.typolink parameter="{settings.socials.instagram}" target="_blank">
+               <i class="fab fa-instagram"></i>
+            </f:link.typolink>
+         </li>
+      </f:if>
+      <f:if condition="{settings.socials.linkedin}">
+         <li class="socials">
+            <f:link.typolink parameter="{settings.socials.linkedin}" target="_blank">
+               <i class="fab fa-linkedin"></i>
+            </f:link.typolink>
+         </li>
+      </f:if>
+   </ul>
+</f:if>
