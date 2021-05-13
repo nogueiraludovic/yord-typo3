@@ -102,4 +102,12 @@ plugin {
             20 = EXT:yord/Resources/Private/Templates/Extensions/News
         }
     }
+
+    tx_form {
+        settings {
+            yamlConfigurations {
+                100 = EXT:yord/Configuration/Yaml/Form/CustomFormSetup.yaml
+            }
+        }
+    }
 }

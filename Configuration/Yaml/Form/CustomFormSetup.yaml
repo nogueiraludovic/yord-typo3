@@ -1,0 +1,14 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  20: 'EXT:yord/Resources/Private/Templates/Extensions/Form/'
+                partialRootPaths:
+                  20: 'EXT:yord/Resources/Private/Partials/Extensions/Form/'
+                layoutRootPaths:
+                  20: 'EXT:yord/Resources/Private/Layouts/Extensions/Form/'
