@@ -3,7 +3,6 @@
         <h1 class="mb-5">{newsItem.title}</h1>
     </header>
 
-    <!-- Image -->
     <f:if condition="{newsItem.falMedia}">
         <f:then>
             <f:for each="{newsItem.falMedia}" as="image" iteration="i">
@@ -15,22 +14,16 @@
             </f:for>
         </f:then>
     </f:if>
-    <!-- End Image -->
 
-    <!-- Description -->
     <div class="w-md-75 w-lg-60 mx-md-auto mb-9">
         <f:format.html>{newsItem.bodytext}</f:format.html>
     </div>
-    <!-- End Description -->
 
-    <!-- Divider -->
     <f:comment>
     <div class="w-60 mx-auto">
         <hr class="mt-5 mb-8">
     </div>
-    <!-- End Divider -->
 
-    <!-- Social Networks -->
     <ul class="list-inline w-md-75 w-lg-60 text-center mx-md-auto mb-0">
         <li class="list-inline-item">
             <a class="u-icon u-icon--secondary u-icon--sm" href="#">
@@ -69,11 +62,7 @@
         </li>
     </ul>
     </f:comment>
-    <!-- End Social Networks -->
 </div>
-<!-- End Article Content -->
-
-<!-- Related News Section -->
 <f:comment>
 <div class="bg-gray-100">
     <div class="container space-2">

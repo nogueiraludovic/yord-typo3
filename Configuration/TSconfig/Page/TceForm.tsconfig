@@ -14,14 +14,17 @@ TCEFORM {
         sectionIndex.disabled = true
         fe_group.disabled = true
 
-        layout {
-            types {
-                text {
-                    addItems.10 = Erreur
-                    keepItems = 0, 10
-                }
-            }
+        subheader.disabled = true
+
+        header_position.types.text {
+            disabled = 0
         }
+        frame_class {
+            addItems.gray = Fond gris
+            keepItems = default, gray
+        }
+
+        layout.keepItems = 0
     }
 
     tx_news_domain_model_news {
@@ -41,3 +44,10 @@ TCEFORM {
         istopnews.disabled = true
     }
 }
+
+[16 in tree.rootLineIds]
+    TCEFORM.tt_content.layout.types.text {
+        addItems.10 = Erreur
+        keepItems = 0, 10
+    }
+[global]

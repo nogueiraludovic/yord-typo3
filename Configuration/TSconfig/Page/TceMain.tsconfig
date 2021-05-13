@@ -1,1 +1,9 @@
-TCEMAIN.translateToMessage =
+TCEMAIN {
+    translateToMessage =
+    permissions {
+        user = 31
+        group = 31
+        userid = 2
+        groupid = 1
+    }
+}

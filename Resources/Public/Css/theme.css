@@ -18794,6 +18794,10 @@ button:focus {
   background-color: #f5f8fb;
 }
 
+.frame-gray {
+  background-color: #f5f8fb;
+}
+
 .bg-black-opacity-0_3 {
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -19820,6 +19824,14 @@ button:focus {
 ------------------------------------*/
 .cursor-pointer {
   cursor: pointer;
+}
+
+.frame-align-center {
+  text-align: center;
+}
+
+.frame-align-right {
+  text-align: right;
 }
 
 /*------------------------------------

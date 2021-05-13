@@ -1,19 +1,17 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<div class="bg-gray-100">
-    <div class="container space-2">
-        <f:if condition="{contentObjectData.header}">
-            <div class="w-md-80 w-lg-60 text-center mx-auto mb-7">
-                <h2 class="h3">{contentObjectData.header}</h2>
-            </div>
-        </f:if>
-
-        <div class="card-deck d-block d-lg-flex">
-            <f:for each="{news}" as="newsItem" iteration="iterator">
-                <f:render partial="List/Small/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
-            </f:for>
+<div class="container space-2">
+    <f:if condition="{contentObjectData.header}">
+        <div class="w-md-80 w-lg-60 text-center mx-auto mb-7">
+            <h2 class="h3">{contentObjectData.header}</h2>
         </div>
+    </f:if>
+
+    <div class="card-deck d-block d-lg-flex">
+        <f:for each="{news}" as="newsItem" iteration="iterator">
+            <f:render partial="List/Small/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+        </f:for>
     </div>
 </div>
 </html>
