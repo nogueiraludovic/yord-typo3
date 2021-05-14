@@ -14898,7 +14898,6 @@ button:focus {
   padding: 10px 30px;
   font-size: 0.6875rem;
   line-height: 1rem;
-  margin: 0 -5px;
 }
 
 .header-secondary li {
@@ -14907,6 +14906,14 @@ button:focus {
 
 .header-secondary li.socials {
   font-size: 1rem;
+}
+
+.header-secondary li:last-child {
+  padding-right: 0;
+}
+
+.header-secondary a {
+  color: #676766;
 }
 
 @media (min-width: 992px) {

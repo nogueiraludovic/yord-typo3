@@ -12,3 +12,8 @@ TYPO3:
                   20: 'EXT:yord/Resources/Private/Partials/Extensions/Form/'
                 layoutRootPaths:
                   20: 'EXT:yord/Resources/Private/Layouts/Extensions/Form/'
+          finishersDefinition:
+            Confirmation:
+              options:
+                templateRootPaths:
+                  20: 'EXT:yord/Resources/Private/Templates/Extensions/Form/Finishers/Confirmation/'

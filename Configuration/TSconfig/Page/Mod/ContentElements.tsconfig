@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems {
+   common {
+      elements {
+         google_maps {
+            iconIdentifier = content-text
+            title = Google maps
+            description = Permet d'ajouter l'élément Google Maps avec différentes options de contact
+            tt_content_defValues {
+               CType = google_maps
+            }
+         }
+      }
+      show := addToList(google_maps)
+   }
+}

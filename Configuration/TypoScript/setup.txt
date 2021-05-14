@@ -110,4 +110,25 @@ plugin {
             }
         }
     }
+
+    tx_yord.view {
+        templateRootPaths {
+            10 = EXT:yord/Resources/Private/Templates/ContentElements/
+        }
+    }
+}
+
+tt_content {
+    google_maps = USER
+    google_maps {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        vendorName = Nogue
+        extensionName = Yord
+        pluginName = ContentElements
+        switchableControllerActions {
+            ContentElement {
+                1 = googleMaps
+            }
+        }
+    }
 }
