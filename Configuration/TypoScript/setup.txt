@@ -131,4 +131,9 @@ tt_content {
             }
         }
     }
+
+    number < .google_maps
+    number {
+        switchableControllerActions.ContentElement.1 = number
+    }
 }

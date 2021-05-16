@@ -9,7 +9,15 @@ mod.wizards.newContentElement.wizardItems {
                CType = google_maps
             }
          }
+         number {
+            iconIdentifier = content-text
+            title = Chiffres clés
+            description = Permet d'ajouter l'élément chiffres clés
+            tt_content_defValues {
+               CType = number
+            }
+         }
       }
-      show := addToList(google_maps)
+      show := addToList(google_maps,number)
    }
 }

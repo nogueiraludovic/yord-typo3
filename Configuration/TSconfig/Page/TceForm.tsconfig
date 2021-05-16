@@ -19,6 +19,7 @@ TCEFORM {
         header_position.types.text {
             disabled = 0
         }
+
         frame_class {
             addItems.gray = Fond gris
             keepItems = default, gray

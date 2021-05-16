@@ -62,6 +62,12 @@ class ContentElementController extends ActionController {
     protected $pointRepository;
 
     /**
+     * @var \Nogue\Yord\Domain\Repository\NumberRepository
+     * @Inject
+     */
+    protected $numberRepository;
+
+    /**
      * Initialization of all actions
      *
      * @return void
@@ -82,16 +88,30 @@ class ContentElementController extends ActionController {
             case 'googleMaps':
                 $this->forward('googleMaps');
                 break;
+            case 'number':
+                $this->forward('number');
+                break;
         }
     }
 
     /**
-     * Slider action
+     * Google maps action
      */
     public function googleMapsAction() {
         $points = $this->pointRepository->findByParent($this->data['uid']);
         $this->view->assignMultiple([
             'points' => $points,
+            'data' => $this->data
+        ]);
+    }
+
+    /**
+     * Number action
+     */
+    public function numberAction() {
+        $numbers = $this->numberRepository->findByParent($this->data['uid']);
+        $this->view->assignMultiple([
+            'numbers' => $numbers,
             'data' => $this->data
         ]);
     }

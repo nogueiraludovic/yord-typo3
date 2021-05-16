@@ -11,6 +11,17 @@
     'textmedia',
     'after'
 );
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+    'tt_content',
+    'CType',
+    [
+        'Chiffres clés',
+        'number',
+        'content-text',
+    ],
+    'textmedia',
+    'after'
+);
 
 $GLOBALS['TCA']['tt_content']['palettes']['map_config'] = [
     'label' => 'Configuration de la map',
@@ -51,6 +62,25 @@ $GLOBALS['TCA']['tt_content']['types']['google_maps'] = [
             ],
         ],
     ],
+];
+
+$GLOBALS['TCA']['tt_content']['types']['number'] = [
+    'showitem' => '
+ --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, 
+    --palette--;;general, 
+    --palette--;;headers, 
+    number;Chiffres clés,
+--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance, 
+    --palette--;;frames, 
+    --palette--;;appearanceLinks, 
+--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, 
+    --palette--;;language, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, 
+    --palette--;;hidden, --palette--;;access, 
+--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories, 
+--div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category, categories, 
+--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes, rowDescription, 
+--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended
+      ',
 ];
 
 $GLOBALS['TCA']['tt_content']['columns']['right_column'] = [
@@ -128,3 +158,43 @@ $GLOBALS['TCA']['tt_content']['columns']['point'] =
             ],
         ]
     ];
+
+$GLOBALS['TCA']['tt_content']['columns']['number'] =
+    [
+        'exclude' => true,
+        'label' => 'Chiffres clés',
+        'config' => [
+            'type' => 'inline',
+            'allowed' => 'tx_yord_domain_model_number',
+            'foreign_table' => 'tx_yord_domain_model_number',
+            'foreign_sortby' => 'sorting',
+            'foreign_field' => 'parent',
+            'size' => 5,
+            'minitems' => 0,
+            'maxitems' => 10,
+            'appearance' => [
+                'collapseAll' => true,
+                'expandSingle' => true,
+                'levelLinksPosition' => 'bottom',
+                'useSortable' => true,
+                'showPossibleLocalizationRecords' => true,
+                'showRemovedLocalizationRecords' => true,
+                'showAllLocalizationLink' => true,
+                'showSynchronizationLink' => true,
+                'enabledControls' => [
+                    'info' => false,
+                ]
+            ],
+            'behaviour' => [
+                'allowLanguageSynchronization' => true,
+            ],
+        ]
+    ];
+
+
+$GLOBALS['TCA']['tt_content']['columns']['header_layout']['displayCond'] = [
+    'OR' => [
+        'FIELD:CType:!=:textmedia',
+        'FIELD:colPos:!=:10'
+    ]
+];
