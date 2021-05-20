@@ -26,6 +26,11 @@ class Number extends AbstractEntity
     protected $number = '';
 
     /**
+     * @var string
+     */
+    protected $icon = '';
+
+    /**
      * @return string
      */
     public function getTitle(): string
@@ -71,6 +76,22 @@ class Number extends AbstractEntity
     public function setNumber(string $number): void
     {
         $this->number = $number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string $icon
+     */
+    public function setIcon(string $icon): void
+    {
+        $this->icon = $icon;
     }
 
 }

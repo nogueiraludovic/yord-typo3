@@ -1,6 +1,13 @@
-<f:debug>{_all}</f:debug>
-
-
-<f:for each="{numbers}" as="number" iteration="numberIteration">
-
-</f:for>
+<div class="container space-2 space-3--lg">
+    <div class="row">
+        <f:for each="{numbers}" as="number" iteration="numberIteration">
+            <div class="col-md-4 mb-7 mb-md-0">
+                <div class="text-center px-lg-3">
+                    <i class="icon-presentation fab fa-{number.icon} mb-4"></i>
+                    <h3 class="h4">{number.title}</h3>
+                    <p class="mb-0">{number.description}</p>
+                </div>
+            </div>
+        </f:for>
+    </div>
+</div>

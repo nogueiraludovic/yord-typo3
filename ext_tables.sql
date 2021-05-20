@@ -69,6 +69,7 @@ CREATE TABLE tx_yord_domain_model_number
     title            varchar(255) DEFAULT '' NOT NULL,
     description      varchar(255) DEFAULT '' NOT NULL,
     number           varchar(255) DEFAULT '' NOT NULL,
+    icon             varchar(255) DEFAULT '' NOT NULL,
 
     PRIMARY KEY (uid)
 );

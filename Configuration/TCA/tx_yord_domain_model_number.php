@@ -131,10 +131,37 @@ $GLOBALS['TCA']['tx_yord_domain_model_number'] = [
                 'eval' => 'trim'
             ]
         ],
+        'icon' => [
+            'label' => 'Icône',
+            'exclude' => true,
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'eval' => 'trim',
+                'fieldInformation' => [
+                    'tagInformation' => [
+                        'renderType' => 'NewsStaticText',
+                        'options' => [
+                            'labels' => [
+                                [
+                                    'label' => 'Prendre un texte d\'icone sur cette page: https://fontawesome.com/icons (prendre le texte des versions gratuites, exemple: "500px")',
+                                    'bold' => true,
+                                    'italic' => true,
+                                ],
+                            ],
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        'image' => [
+
+        ]
     ],
     'types' => [
         0 => [
-            'showitem' => '--palette--;;paletteCore,title,description,number'
+            'showitem' => '--palette--;;paletteCore,title,description,icon'
         ]
     ],
     'palettes' => [

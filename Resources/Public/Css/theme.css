@@ -16401,6 +16401,12 @@ button:focus {
   border-color: #24292e;
 }
 
+.icon-presentation {
+  display: flex;
+  justify-content: center;
+  font-size: 5rem;
+}
+
 /*------------------------------------
   Icon Sizes
 ------------------------------------*/
@@ -16440,7 +16446,7 @@ button:focus {
 .u-icon--xl {
   width: 6rem;
   height: 6rem;
-  font-size: 2.25rem;
+  font-size: 5rem;
   border-radius: 0.25rem;
 }
 
