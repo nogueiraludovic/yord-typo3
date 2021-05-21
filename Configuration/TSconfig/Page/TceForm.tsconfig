@@ -16,6 +16,12 @@ TCEFORM {
 
         subheader.disabled = true
 
+        textmedia.types.textmedia {
+            disabled = 0
+        }
+        bodytext.types.textmedia {
+            disabled = true
+        }
         header_position.types.text {
             disabled = 0
         }
