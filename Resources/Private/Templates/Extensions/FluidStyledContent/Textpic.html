@@ -11,7 +11,7 @@
     <div class="container space-2 space-3--lg">
         <div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
             <div class="row align-items-lg-center">
-                <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'26\'', then: '1', else: '2')} mb-5 mb-md-0">
+                <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '1', else: '2')} mb-5 mb-md-0">
                     <div class="mb-4">
                         <f:if condition="{data.bodytext}">
                             <f:then>
@@ -30,7 +30,7 @@
                 </div>
 
 
-                <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'26\'', then: '2', else: '1')}">
+                <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '2', else: '1')}">
                     <div class="pr-lg-4">
                         <f:render partial="Media/Gallery" arguments="{_all}" />
                     </div>
