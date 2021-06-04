@@ -136,9 +136,4 @@ tt_content {
     number {
         switchableControllerActions.ContentElement.1 = number
     }
-
-    textpic.dataProcessing.20 {
-        maxGalleryWidth = 1200
-        maxGalleryWidthInText = 600
-    }
 }
