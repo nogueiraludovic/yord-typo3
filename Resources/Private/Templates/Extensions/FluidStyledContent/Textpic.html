@@ -19,9 +19,6 @@
                                     <f:if condition="{data.header}">
                                         <h2 class="h3">{data.header}</h2>
                                     </f:if>
-                                    <f:if condition="{gallery.position.noWrap}">
-                                        <f:render partial="Header/All" arguments="{_all}" />
-                                    </f:if>
                                     <f:format.html>{data.bodytext}</f:format.html>
                                 </div>
                             </f:then>
