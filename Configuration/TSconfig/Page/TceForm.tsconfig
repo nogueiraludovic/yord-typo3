@@ -31,6 +31,10 @@ TCEFORM {
             keepItems = default, gray
         }
 
+        imageorient {
+            keepItems = 25, 26
+        }
+
         layout.keepItems = 0
     }
 
