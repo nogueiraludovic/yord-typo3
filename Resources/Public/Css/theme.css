@@ -19929,6 +19929,11 @@ img {
   height: auto;
 }
 
+.frame-type-image .ce-row {
+  display: flex;
+  justify-content: center;
+}
+
 /*------------------------------------
   Animate.css
 ------------------------------------*/
