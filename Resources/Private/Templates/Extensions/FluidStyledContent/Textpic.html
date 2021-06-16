@@ -11,27 +11,38 @@
     <div class="container space-2 space-3--lg">
         <div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
             <div class="row align-items-lg-center">
-                <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '1', else: '2')} mb-5 mb-md-0">
-                    <div class="mb-4">
-                        <f:if condition="{data.bodytext}">
-                            <f:then>
-                                <div class="ce-bodytext">
-                                    <f:if condition="{data.header}">
-                                        <h2 class="h3">{data.header}</h2>
-                                    </f:if>
-                                    <f:format.html>{data.bodytext}</f:format.html>
-                                </div>
-                            </f:then>
-                        </f:if>
-                    </div>
-                </div>
+                <f:if condition="{data.bodytext}">
+                    <f:then>
+                        <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '1', else: '2')} mb-5 mb-md-0">
+                            <div class="mb-4">
+                                <f:if condition="{data.bodytext}">
+                                    <f:then>
+                                        <div class="ce-bodytext">
+                                            <f:if condition="{data.header}">
+                                                <h2 class="h3">{data.header}</h2>
+                                            </f:if>
+                                            <f:format.html>{data.bodytext}</f:format.html>
+                                        </div>
+                                    </f:then>
+                                </f:if>
+                            </div>
+                        </div>
 
 
-                <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '2', else: '1')}">
-                    <div class="pr-lg-4">
-                        <f:render partial="Media/Gallery" arguments="{_all}" />
-                    </div>
-                </div>
+                        <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '2', else: '1')}">
+                            <div class="pr-lg-4">
+                                <f:render partial="Media/Gallery" arguments="{_all}" />
+                            </div>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div class="col-md-12">
+                            <div class="pr-lg-4">
+                                <f:render partial="Media/Gallery" arguments="{_all}" />
+                            </div>
+                        </div>
+                    </f:else>
+                </f:if>
             </div>
         </div>
 
