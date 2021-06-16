@@ -19934,6 +19934,10 @@ img {
   justify-content: center;
 }
 
+.frame-type-image .ce-gallery {
+  float: none !important;
+}
+
 /*------------------------------------
   Animate.css
 ------------------------------------*/
