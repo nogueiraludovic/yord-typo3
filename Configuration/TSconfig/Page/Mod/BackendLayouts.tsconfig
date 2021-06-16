@@ -10,7 +10,7 @@ mod.web_layout.BackendLayouts {
                         name = En-tête
                         colPos = 10
                         colspan = 1
-                        allowed.CType = textmedia
+                        allowed = textmedia
                     }
                     2 < .1
                     2.columns.1 {
