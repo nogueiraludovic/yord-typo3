@@ -5,9 +5,10 @@
                 <h3>{timeline.title}</h3>
             </div>
             <div class="col-md-4 order-2">
+
                 <f:for each="{timeline.image}" as="image" iteration="imageIteration">
                     <f:if condition="{imageIteration.isFirst}">
-                        <f:image image="{image}" />
+                        <f:image image="{image}" width="300c" height="300c" />
                     </f:if>
                 </f:for>
             </div>
