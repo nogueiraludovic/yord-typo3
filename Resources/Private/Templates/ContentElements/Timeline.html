@@ -1,6 +1,6 @@
 <div class="container space-1 space-2--lg">
     <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
-        <div class="row">
+        <div class="row" style="margin: 20px 0">
             <div class="col-md-4{f:if(condition: '{timelineIteration.isEven}', then: ' order-3', else: ' order-1')}">
                 <h3>{timeline.title}</h3>
             </div>
@@ -8,7 +8,7 @@
 
                 <f:for each="{timeline.image}" as="image" iteration="imageIteration">
                     <f:if condition="{imageIteration.isFirst}">
-                        <f:image image="{image}" width="300c" height="300c" />
+                        <f:image image="{image}" width="300" height="300" />
                     </f:if>
                 </f:for>
             </div>
