@@ -17,7 +17,15 @@ mod.wizards.newContentElement.wizardItems {
                CType = number
             }
          }
+         timeline {
+            iconIdentifier = content-timeline
+            title = Timeline
+            description = Permet d'ajouter l'élément timeline
+            tt_content_defValues {
+               CType = timeline
+            }
+         }
       }
-      show := addToList(google_maps,number)
+      show := addToList(google_maps,number,timeline)
    }
 }

@@ -136,4 +136,9 @@ tt_content {
     number {
         switchableControllerActions.ContentElement.1 = number
     }
+
+    timeline < .google_maps
+    timeline {
+        switchableControllerActions.ContentElement.1 = timeline
+    }
 }

@@ -68,6 +68,12 @@ class ContentElementController extends ActionController {
     protected $numberRepository;
 
     /**
+     * @var \Nogue\Yord\Domain\Repository\TimelineRepository
+     * @Inject
+     */
+    protected $timelineRepository;
+
+    /**
      * Initialization of all actions
      *
      * @return void
@@ -91,6 +97,9 @@ class ContentElementController extends ActionController {
             case 'number':
                 $this->forward('number');
                 break;
+            case 'timeline':
+                $this->forward('timeline');
+                break;
         }
     }
 
@@ -112,6 +121,17 @@ class ContentElementController extends ActionController {
         $numbers = $this->numberRepository->findByParent($this->data['uid']);
         $this->view->assignMultiple([
             'numbers' => $numbers,
+            'data' => $this->data
+        ]);
+    }
+
+    /**
+     * Number action
+     */
+    public function timelineAction() {
+        $timeline = $this->timelineRepository->findByParent($this->data['uid']);
+        $this->view->assignMultiple([
+            'timelines' => $timeline,
             'data' => $this->data
         ]);
     }
