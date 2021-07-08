@@ -1,20 +1,26 @@
-<div class="container space-1 space-2--lg">
-    <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
-        <div class="row" style="margin: 20px 0">
-            <div class="col-md-4{f:if(condition: '{timelineIteration.isEven}', then: ' order-3', else: ' order-1')}">
-                <h3>{timeline.title}</h3>
-            </div>
-            <div class="col-md-4 order-2">
+<div class="container  space-1 space-2--lg">
+    <ul class="u-timeline">
 
-                <f:for each="{timeline.image}" as="image" iteration="imageIteration">
-                    <f:if condition="{imageIteration.isFirst}">
-                        <f:image image="{image}" width="300c" height="300c" />
-                    </f:if>
-                </f:for>
-            </div>
-            <div class="col-md-4{f:if(condition: '{timelineIteration.isEven}', then: ' order-1', else: ' order-3')}">
-                <f:format.html>{timeline.description}</f:format.html>
-            </div>
-        </div>
-    </f:for>
+        <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
+            <li class="u-timeline__item">
+                <div class="u-timeline__content">
+                    <div class="media">
+                        <div class="media-body">
+                            <f:format.html>{timeline.description}</f:format.html>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-timeline__info">
+                    <f:for each="{timeline.image}" as="image" iteration="imageIteration">
+                        <f:if condition="{imageIteration.isFirst}">
+                            <f:image class="w-sm-50 w-lg-75 mx-lg-auto" image="{image}" width="300c" height="300c" />
+                        </f:if>
+                    </f:for>
+                </div>
+                <div class="u-timeline__spacer">
+                    <h2 class="h2">{timeline.title}</h2>
+                </div>
+            </li>
+        </f:for>
+    </ul>
 </div>
