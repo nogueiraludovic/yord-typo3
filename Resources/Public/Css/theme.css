@@ -18674,6 +18674,7 @@ button:focus {
 @media (min-width: 992px) {
   .u-timeline__item:nth-child(odd) .u-timeline__content {
     order: 1;
+    text-align: right;
   }
   .u-timeline__item:nth-child(odd) .u-timeline__info {
     order: 2;
@@ -18692,6 +18693,7 @@ button:focus {
   }
   .u-timeline__item:nth-child(even) .u-timeline__spacer {
     order: 1;
+    text-align: right;
   }
 }
 
