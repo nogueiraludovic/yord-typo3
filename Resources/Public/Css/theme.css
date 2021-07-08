@@ -18723,11 +18723,6 @@ button:focus {
   }
 }
 
-.u-timeline__spacer {
-  display: flex;
-  align-items: center;
-}
-
 .u-timeline__info, .u-timeline__content, .u-timeline__spacer {
   padding-right: .9375rem;
   padding-left: .9375rem;
