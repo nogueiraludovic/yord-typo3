@@ -13,7 +13,7 @@
             <div class="row align-items-lg-center">
                 <f:if condition="{data.bodytext}">
                     <f:then>
-                        <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '1', else: '2')} mb-5 mb-md-0">
+                        <div class="col-md-{f:if(condition: '{data.imageorient} == \'0\' || {data.imageorient} == \'8\'', then: '12', else: '6')} order-md-{f:if(condition: '{data.imageorient} == \'25\' || {data.imageorient} == \'8\'', then: '1', else: '2')} mb-5 mb-md-0">
                             <div class="mb-4">
                                 <f:if condition="{data.bodytext}">
                                     <f:then>
@@ -29,7 +29,7 @@
                         </div>
 
 
-                        <div class="col-md-6 order-md-{f:if(condition: '{data.imageorient} == \'25\'', then: '2', else: '1')}">
+                        <div class="col-md-{f:if(condition: '{data.imageorient} == \'0\' || {data.imageorient} == \'8\'', then: '12', else: '6')} order-md-{f:if(condition: '{data.imageorient} == \'25\' || {data.imageorient} == \'8\'', then: '2', else: '1')}">
                             <div class="pr-lg-4">
                                 <f:render partial="Media/Gallery" arguments="{_all}" />
                             </div>
