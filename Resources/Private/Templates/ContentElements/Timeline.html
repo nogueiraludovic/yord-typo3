@@ -1,23 +1,23 @@
-<div class="container  space-1 space-2--lg">
+<div class="container  space-1 space-2--lg js-fade">
     <ul class="u-timeline">
 
         <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
             <li class="u-timeline__item">
-                <div class="u-timeline__content">
+                <div class="u-timeline__content {f:if(condition: '{timelineIteration.idOdd}', then: 'fade-in-right', else: 'fade-in-left')}">
                     <div class="media">
                         <div class="media-body">
                             <f:format.html>{timeline.description}</f:format.html>
                         </div>
                     </div>
                 </div>
-                <div class="u-timeline__info">
+                <div class="u-timeline__info fade-in-up">
                     <f:for each="{timeline.image}" as="image" iteration="imageIteration">
                         <f:if condition="{imageIteration.isFirst}">
                             <f:image class="w-sm-50 w-lg-75 mx-lg-auto" image="{image}" width="300c" height="300c" />
                         </f:if>
                     </f:for>
                 </div>
-                <div class="u-timeline__spacer">
+                <div class="u-timeline__spacer fade-in-up">
                     <h2 class="h2">{timeline.title}</h2>
                 </div>
             </li>

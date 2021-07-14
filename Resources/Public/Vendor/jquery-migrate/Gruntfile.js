@@ -1,35 +1,73 @@
-/*global module:false*/
+"use strict";
+
+/* global module:false */
+
 module.exports = function( grunt ) {
 
-	"use strict";
+	const gzip = require( "gzip-js" );
+
+	const karmaFilesExceptJQuery = [
+		"node_modules/native-promise-only/lib/npo.src.js",
+		"dist/jquery-migrate.min.js",
+		"test/data/compareVersions.js",
+
+		"test/testinit.js",
+		"test/migrate.js",
+		"test/core.js",
+		"test/ajax.js",
+		"test/attributes.js",
+		"test/css.js",
+		"test/data.js",
+		"test/deferred.js",
+		"test/effects.js",
+		"test/event.js",
+		"test/manipulation.js",
+		"test/offset.js",
+		"test/serialize.js",
+		"test/traversing.js",
+
+		{ pattern: "dist/jquery-migrate.js", included: false, served: true },
+		{ pattern: "test/**/*.@(js|json|css|jpg|html|xml)", included: false, served: true }
+	];
 
 	// Project configuration.
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( "package.json" ),
-		files: [
-			"src/intro.js",
-			"src/version.js",
-			"src/migrate.js",
-			"src/core.js",
-			"src/ajax.js",
-			"src/attributes.js",
-			"src/css.js",
-			"src/data.js",
-			"src/effects.js",
-			"src/event.js",
-			"src/offset.js",
-			"src/serialize.js",
-			"src/traversing.js",
-			"src/deferred.js",
-			"src/outro.js"
-		],
+		compare_size: {
+			files: [ "dist/jquery-migrate.js", "dist/jquery-migrate.min.js" ],
+			options: {
+				compress: {
+					gz: function( contents ) {
+						return gzip.zip( contents, {} ).length;
+					}
+				},
+				cache: "build/.sizecache.json"
+			}
+		},
 		tests: {
-			"jquery": [
+			jquery: [
 				"dev+git",
 				"min+git.min",
+				"dev+git.slim",
+				"min+git.slim.min"
+			],
+			"jquery-3": [
+				"dev+3.x-git",
+				"min+3.x-git.min",
+				"dev+3.x-git.slim",
+				"min+3.x-git.slim.min",
+				"dev+3.5.1",
+				"dev+3.5.1.slim",
+				"dev+3.4.1",
+				"dev+3.4.1.slim",
+				"dev+3.3.1",
+				"dev+3.3.1.slim",
 				"dev+3.2.1",
+				"dev+3.2.1.slim",
 				"dev+3.1.1",
-				"dev+3.0.0"
+				"dev+3.1.1.slim",
+				"dev+3.0.0",
+				"dev+3.0.0.slim"
 			]
 		},
 		banners: {
@@ -46,26 +84,14 @@ module.exports = function( grunt ) {
 				dest: "dist/<%= pkg.name %>.js"
 			}
 		},
-		qunit: {
-			options: {
-				coverage: {
-					disposeCollector: true,
-					instrumentedFiles: "temp/",
-					src: [ "src/!(intro.js|outro.js)" ],
-					htmlReport: "coverage/html",
-					lcovReport: "coverage/lcov",
-					linesThresholdPct: 85
-				}
-			},
-			files: [ "test/**/index.html" ]
-		},
-		coveralls: {
-			src: "coverage/lcov/lcov.info",
-			options: {
-
-				// Should not fail if coveralls is down
-				force: true
+		build: {
+			all: {
+				src: "src/migrate.js",
+				dest: "dist/jquery-migrate.js"
 			}
+		},
+		qunit: {
+			files: [ "test/**/index.html" ]
 		},
 		eslint: {
 			options: {
@@ -89,15 +115,90 @@ module.exports = function( grunt ) {
 		uglify: {
 			all: {
 				files: {
-					"dist/jquery-migrate.min.js": [ "src/migratemute.js", "dist/jquery-migrate.js" ]
+					"dist/jquery-migrate.min.js":
+						[ "src/migratemute.js", "dist/jquery-migrate.js" ]
+				},
+				options: {
+					preserveComments: false,
+					sourceMap: true,
+					sourceMapName: "dist/jquery-migrate.min.map",
+					report: "min",
+					output: {
+						"ascii_only": true,
+
+						// Support: Android 4.0 only
+						// UglifyJS 3 breaks Android 4.0 if this option is not enabled.
+						// This is in lieu of setting ie8 for all of mangle, compress, and output
+						"ie8": true
+					},
+					banner: "/*! jQuery Migrate v<%= pkg.version %>" +
+						" | (c) <%= pkg.author.name %> | jquery.org/license */",
+					compress: {
+						"hoist_funs": false,
+						loops: false,
+
+						// Support: IE <11
+						// typeofs transformation is unsafe for IE9-10
+						// See https://github.com/mishoo/UglifyJS2/issues/2198
+						typeofs: false
+					}
+				}
+			}
+		},
+		karma: {
+			options: {
+				customLaunchers: {
+					ChromeHeadlessNoSandbox: {
+						base: "ChromeHeadless",
+						flags: [ "--no-sandbox" ]
+					}
+				},
+				frameworks: [ "qunit" ],
+				files: [
+					"https://code.jquery.com/jquery-3.x-git.min.js",
+					...karmaFilesExceptJQuery
+				],
+				client: {
+					clearContext: false,
+					qunit: {
+						showUI: true,
+						testTimeout: 5000
+					}
+				},
+				reporters: [ "dots" ],
+				autoWatch: false,
+				concurrency: 3,
+				captureTimeout: 20 * 1000,
+				singleRun: true
+			},
+			main: {
+				browsers: [ "ChromeHeadless", "FirefoxHeadless" ]
+			},
+
+			"jquery-slim": {
+				browsers: [ "ChromeHeadless", "FirefoxHeadless" ],
+
+				options: {
+					files: [
+						"https://code.jquery.com/jquery-3.x-git.slim.min.js",
+						...karmaFilesExceptJQuery
+					]
 				}
 			},
-			options: {
-				banner: "/*! jQuery Migrate v<%= pkg.version %>" +
-					" | (c) <%= pkg.author.name %> | jquery.org/license */\n",
-				beautify: {
-					ascii_only: true
-				}
+
+			// To debug tests with Karma:
+			// 1. Run 'grunt karma:chrome-debug' or 'grunt karma:firefox-debug'
+			//    (any karma subtask that has singleRun=false)
+			// 2. Press "Debug" in the opened browser window to start
+			//    the tests. Unlike the other karma tasks, the debug task will
+			//    keep the browser window open.
+			"chrome-debug": {
+				browsers: [ "Chrome" ],
+				singleRun: false
+			},
+			"firefox-debug": {
+				browsers: [ "Firefox" ],
+				singleRun: false
 			}
 		},
 		watch: {
@@ -113,7 +214,10 @@ module.exports = function( grunt ) {
 	grunt.loadTasks( "build/tasks" );
 
 	// Just an alias
-	grunt.registerTask( "test", [ "qunit" ] );
+	grunt.registerTask( "test", [
+		"karma:main",
+		"karma:jquery-slim"
+	] );
 
 	grunt.registerTask( "lint", [
 
@@ -124,10 +228,19 @@ module.exports = function( grunt ) {
 		"eslint:dev",
 		"eslint:dist"
 	] );
-	grunt.registerTask( "build", [ "concat", "uglify", "lint" ] );
 
-	grunt.registerTask( "default", [ "build", "test" ] );
+	grunt.registerTask( "default-no-test", [
+		"build",
+		"uglify",
+		"lint",
+		"compare_size"
+	] );
+
+	grunt.registerTask( "default", [
+		"default-no-test",
+		"test"
+	] );
 
 	// For CI
-	grunt.registerTask( "ci", [ "build", "test", "coveralls" ] );
+	grunt.registerTask( "ci", [ "default" ] );
 };

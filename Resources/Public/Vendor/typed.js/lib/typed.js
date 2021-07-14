@@ -2,7 +2,7 @@
  * 
  *   typed.js - A JavaScript Typing Animation Library
  *   Author: Matt Boldt <me@mattboldt.com>
- *   Version: v2.0.6
+ *   Version: v2.0.12
  *   Url: https://github.com/mattboldt/typed.js
  *   License(s): MIT
  * 
@@ -183,6 +183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function begin() {
 	      var _this = this;
 	
+	      this.options.onBegin(this);
 	      this.typingComplete = false;
 	      this.shuffleStringsIfNeeded(this);
 	      this.insertCursor();
@@ -267,7 +268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _this2.toggleBlinking(false);
 	
 	          // We're done with this sentence!
-	          if (curStrPos === curString.length) {
+	          if (curStrPos >= curString.length) {
 	            _this2.doneTyping(curString, curStrPos);
 	          } else {
 	            _this2.keepTyping(curString, curStrPos, numChars);
@@ -307,7 +308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	
 	    /**
-	     * We're done typing all strings
+	     * We're done typing the current string
 	     * @param {string} curString the current string in the strings array
 	     * @param {number} curStrPos the current position in the curString
 	     * @private
@@ -346,7 +347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this4 = this;
 	
 	      if (this.pause.status === true) {
-	        this.setPauseStatus(curString, curStrPos, true);
+	        this.setPauseStatus(curString, curStrPos, false);
 	        return;
 	      }
 	      if (this.fadeOut) return this.initFadeOut();
@@ -439,8 +440,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (this.pause.status) return;
 	      if (this.cursorBlinking === isBlinking) return;
 	      this.cursorBlinking = isBlinking;
-	      var status = isBlinking ? 'infinite' : 0;
-	      this.cursor.style.animationIterationCount = status;
+	      if (isBlinking) {
+	        this.cursor.classList.add('typed-cursor--blink');
+	      } else {
+	        this.cursor.classList.remove('typed-cursor--blink');
+	      }
 	    }
 	
 	    /**
@@ -547,6 +551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (this.cursor) return;
 	      this.cursor = document.createElement('span');
 	      this.cursor.className = 'typed-cursor';
+	      this.cursor.setAttribute('aria-hidden', true);
 	      this.cursor.innerHTML = this.cursorChar;
 	      this.el.parentNode && this.el.parentNode.insertBefore(this.cursor, this.el.nextSibling);
 	    }
@@ -738,27 +743,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'appendAnimationCss',
 	    value: function appendAnimationCss(self) {
+	      var cssDataName = 'data-typed-js-css';
 	      if (!self.autoInsertCss) {
 	        return;
 	      }
-	      if (!self.showCursor || !self.fadeOut) {
+	      if (!self.showCursor && !self.fadeOut) {
+	        return;
+	      }
+	      if (document.querySelector('[' + cssDataName + ']')) {
 	        return;
 	      }
 	
 	      var css = document.createElement('style');
 	      css.type = 'text/css';
+	      css.setAttribute(cssDataName, true);
+	
 	      var innerCss = '';
 	      if (self.showCursor) {
-	        innerCss += '\n        .typed-cursor{\n          opacity: 1;\n          animation: typedjsBlink 0.7s infinite;\n          -webkit-animation: typedjsBlink 0.7s infinite;\n                  animation: typedjsBlink 0.7s infinite;\n        }\n        @keyframes typedjsBlink{\n          50% { opacity: 0.0; }\n        }\n        @-webkit-keyframes typedjsBlink{\n          0% { opacity: 1; }\n          50% { opacity: 0.0; }\n          100% { opacity: 1; }\n        }\n      ';
+	        innerCss += '\n        .typed-cursor{\n          opacity: 1;\n        }\n        .typed-cursor.typed-cursor--blink{\n          animation: typedjsBlink 0.7s infinite;\n          -webkit-animation: typedjsBlink 0.7s infinite;\n                  animation: typedjsBlink 0.7s infinite;\n        }\n        @keyframes typedjsBlink{\n          50% { opacity: 0.0; }\n        }\n        @-webkit-keyframes typedjsBlink{\n          0% { opacity: 1; }\n          50% { opacity: 0.0; }\n          100% { opacity: 1; }\n        }\n      ';
 	      }
 	      if (self.fadeOut) {
-	        innerCss += '\n        .typed-fade-out{\n          opacity: 0;\n          transition: opacity .25s;\n          -webkit-animation: 0;\n                  animation: 0;\n        }\n      ';
+	        innerCss += '\n        .typed-fade-out{\n          opacity: 0;\n          transition: opacity .25s;\n        }\n        .typed-cursor.typed-cursor--blink.typed-fade-out{\n          -webkit-animation: 0;\n          animation: 0;\n        }\n      ';
 	      }
 	      if (css.length === 0) {
 	        return;
 	      }
 	      css.innerHTML = innerCss;
-	      document.head.appendChild(css);
+	      document.body.appendChild(css);
 	    }
 	  }]);
 	
@@ -864,6 +875,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  contentType: 'html',
 	
 	  /**
+	   * Before it begins typing
+	   * @param {Typed} self
+	   */
+	  onBegin: function onBegin(self) {},
+	
+	  /**
 	   * All typing is complete
 	   * @param {Typed} self
 	   */
@@ -937,7 +954,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ (function(module, exports) {
 
-	
 	/**
 	 * TODO: These methods can probably be combined somehow
 	 * Parse HTML tags & HTML Characters

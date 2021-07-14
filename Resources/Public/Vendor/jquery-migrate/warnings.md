@@ -98,9 +98,8 @@ This is _not_ a warning, but a console log message the plugin shows when it firs
 **Solution**: It is almost always a mistake to use `.removeAttr( "checked" )` on a DOM element. The only time it might be useful is if the DOM is later going to be serialized back to an HTML string. In all other cases, `.prop( "checked", false )` should be used instead.
 
 ### JQMIGRATE: jQuery.fn.offset() requires a valid DOM element
-### JQMIGRATE: jQuery.fn.offset() requires an element connected to a document
 
-**Cause:** In earlier versions of jQuery, the `.offset()` method would return a value of `{ top: 0, left: 0 }` for some cases of invalid input. jQuery 3.0 throws errors in some of these cases. The selected element in the jQuery collection must be a DOM element that is currently in a document. Text nodes, the `window` object, plain JavaScript objects, and disconnected elements are not valid input to the `.offset()` method. jQuery *may* throw an error in those cases but in general does not guarantee specific results with invalid inputs.
+**Cause:** In earlier versions of jQuery, the `.offset()` method would return a value of `{ top: 0, left: 0 }` for some cases of invalid input. jQuery 3.0 throws errors in some of these cases. The selected element in the jQuery collection must be a DOM element that has a `getBoundingClientRect` method. Text nodes, the `window` object, and plain JavaScript objects are not valid input to the `.offset()` method. jQuery *may* throw an error in those cases but in general does not guarantee specific results with invalid inputs.
 
 **Solution**: Do not attempt to get or set the offset information of invalid input.
 
@@ -161,11 +160,17 @@ See jQuery-ui [commit](https://github.com/jquery/jquery-ui/commit/c0093b599fcd58
 
 **Solution**: Replace any use of `jQuery.parseJSON` with `JSON.parse`.
 
-### JQMIGRATE: jQuery.isNumeric() should not be called on constructed objects
+### JQMIGRATE: jQuery.isNumeric() is deprecated
 
-**Cause**: The intended use case of `jQuery.isNumeric` is to see if its argument is either already a number, or a string that can be converted to a number. In jQuery 3.0 some edge cases changed to not return the same values. In particular, a constructed object (one created with `new MyObject()`) that contains a `.toString()` method is never considered to be numeric, even if that method returns a string that could be converted to a number. Please do not taunt this method.
+**Cause**: This method was used by jQuery to determine if certain string arguments could be converted to numbers, but the name led people to apply their own interpretations to what the method means. As a result, it often doesn't meet the needs of specific cases. For example, a 25-character string of only digits is technically a valid number, but JavaScript cannot represent it accurately. The string `"0x251D"` is a valid hexadecimal number but may not be acceptable numeric input to a web form.
 
-**Solution**: Either use a different test for being numeric, or call the object's `.toString()` method before calling the jQuery method: `jQuery.isNumeric( myObject.toString() )`.
+**Solution**: Use a test for being numeric that makes sense for the specific situation. For example, instead of `jQuery.isNumeric(string)`, use `isNan(parseFloat(string))` if a floating point number is expected, or `string.test(/^[0-9]{1,8}$/)` if a sequence of 1 to 8 digits is expected.
+
+### JQMIGRATE: jQuery.type() is deprecated
+
+**Cause**: This method returns a string that indicates the type of the argument, for example `"number"` or `"function"`. However, as the JavaScript language evolves this method has become problematic because new language constructs might require this function to either return a new string (potentially breaking existing code) or somehow map new constructs into existing strings (again, potentially breaking existing code). Examples of new recent JavaScript features include asynchronous functions, class constructors, `Symbol`s, or functions that act as iterators.
+
+**Solution**: Review code that uses `jQuery.type()` and use a type check that is appropriate for the situation. For example. if the code expects a plain function, check for `typeof arg === "function"`.
 
 ### JQMIGRATE: jQuery.unique is deprecated; use jQuery.uniqueSort
 
@@ -206,6 +211,11 @@ See jQuery-ui [commit](https://github.com/jquery/jquery-ui/commit/c0093b599fcd58
 
 **Solution:** Rewrite the page so that it does not require all jQuery ready handlers to be delayed. This might be accomplished, for example, by late-loading only the code that requires the delay when it is safe to run. Due to the complexity of this method, jQuery Migrate does not attempt to fill the functionality. If the underlying version of jQuery used with jQuery Migrate no longer contains `jQuery.holdReady()` the code will fail shortly after this warning appears.
 
+### JQMIGRATE: jQuery.isWindow() is deprecated
+
+**Cause:** This method returns `true` if its argument is thought to be a `window` element. It was created for internal use and is not a reliable way of detecting `window` for public needs.
+
+**Solution:** Remove any use of `jQuery.isWindow()` from code. If it is truly needed it can be replaced with a check for `obj != null && obj === obj.window` which was the test used inside this method.
 
 ### JQMIGRATE: jQuery.fn.click() event shorthand is deprecated
 
@@ -218,3 +228,39 @@ See jQuery-ui [commit](https://github.com/jquery/jquery-ui/commit/c0093b599fcd58
 **Cause:** The `.hover()` method is a shorthand for the use of the `mouseover`/`mouseout` events. It is often a poor user interface choice because it does not allow for any small amounts of delay between when the mouse enters or exits an area and when the event fires. This can make it quite difficult to use with UI widgets such as drop-down menus.  For more information on the problems of hovering, see the [hoverIntent plugin](http://cherne.net/brian/resources/jquery.hoverIntent.html).
 
 **Solution:** Review uses of `.hover()` to determine if they are appropriate, and consider use of plugins such as `hoverIntent` as an alternative. The direct replacement for `.hover(fn1, fn2)`, is `.on("mouseenter", fn1).on("mouseleave", fn2)`.
+
+### JQMIGRATE: jQuery.nodeName() is deprecated
+
+**Cause:** This public but never-documented method has been deprecated as of jQuery 3.2.0.
+
+**Solution:** Replace calls such as `jQuery.nodeName( elem, "div" )` with a test such as `elem.nodeName.toLowerCase() === "div"`.
+
+### JQMIGRATE: jQuery.cssProps is deprecated
+
+**Cause:** The `jQuery.cssProps` property is a public but undocumented object that allows CSS properties with one name to be mapped into another name. It was used for legacy browsers like IE8 that used non-standard names. This object is no longer used inside jQuery since all supported browsers now use the standard CSS property names.
+
+**Solution:** Remove any uses of `jQuery.cssProps` in application code.
+
+#### JQMIGRATE: jQuery.isArray is deprecated; use Array.isArray
+
+**Cause:** Older versions of JavaScript made it difficult to determine if a particular object was a true Array, so jQuery provided a cross-browser function to do the work. The browsers supported by jQuery 3.0 all provide a standard method for this purpose.
+
+**Solution:** Replace any calls to `jQuery.isArray` with `Array.isArray`.
+
+#### JQMIGRATE: jQuery.trim is deprecated; use String.prototype.trim
+
+**Cause:** Older versions of IE & Android Browser didn't implement a method to `trim` strings so jQuery provided a cross-browser implementation. The browsers supported by jQuery 3.0 all provide a standard method for this purpose.
+
+**Solution:** Replace any calls to `jQuery.trim( text )` with `text.trim()` if you know `text` is a string; otherwise, you can replace it with `String.prototype.trim.call( text == null ? "" : text )`.
+
+### JQMIGRATE: Number-typed values are deprecated for jQuery.fn.css( _(property name)_, value )
+
+**Cause:** In past versions, when a number-typed value was passed to `.css()` jQuery converted it to a string and added `"px"` to the end. As the CSS standard has evolved, an increasingly large set of CSS properties now accept values that are unitless numbers, where this behavior is incorrect. It has become impractical to manage these exceptions in the `jQuery.cssNumber` object. In addition, some CSS properties like `line-height` can accept both a bare number `2` or a pixel value `2px`. jQuery cannot know the correct way to interpret `$.css("line-height", 2)` and currently treats it as `"2px"`.
+
+**Solution:** Always pass string values to `.css()`, and explicitly add units where required. For example, use `$.css("line-height", "2")` to specify 200% of the current line height or `$.css("line-height", "2px")` to specify pixels. When the numeric value is in a variable, ensure the value is converted to string, e.g. `$.css("line-height", String(height))` and `$.css("line-height", height+"px")`.
+
+#### JQMIGRATE: HTML tags must be properly nested and closed: _(HTML string)_
+
+**Cause:** jQuery 3.5.0 changed the way it processes HTML strings. Previously, jQuery would attempt to fix self-closed tags like `<i class="test" />` that the HTML5 specification says are not self-closed, turning it into `<i class="test"></i>`. This processing can create a [security problem](https://nvd.nist.gov/vuln/detail/CVE-2020-11022) with malicious strings, so the functionality had to be removed.
+
+**Solution:** Search for the reported HTML strings and edit the tags to close them explicitly. In some cases the strings passed to jQuery may be created inside the program and thus not searchable. Migrate warning messages include a stack trace that can be used to find the location of the usage in the code.
