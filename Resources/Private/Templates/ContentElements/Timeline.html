@@ -3,7 +3,7 @@
 
         <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
             <li class="u-timeline__item">
-                <div class="u-timeline__content {f:if(condition: '{timelineIteration.idOdd}', then: 'fade-in-right', else: 'fade-in-left')}">
+                <div class="u-timeline__content {f:if(condition: '{timelineIteration.isOdd}', then: 'fade-in-right', else: 'fade-in-left')}">
                     <div class="media">
                         <div class="media-body">
                             <f:format.html>{timeline.description}</f:format.html>
