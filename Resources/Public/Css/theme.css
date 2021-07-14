@@ -18731,6 +18731,10 @@ button:focus {
   padding-left: .9375rem;
 }
 
+.u-timeline__content {
+  animation-delay: 0.3s;
+}
+
 .u-timeline__info, .u-timeline__content {
   position: relative;
 }
@@ -18761,6 +18765,10 @@ button:focus {
     border-left: 3px solid #e3e6f0;
     content: "";
   }
+}
+
+.row-number {
+  justify-content: center;
 }
 
 /*------------------------------------
