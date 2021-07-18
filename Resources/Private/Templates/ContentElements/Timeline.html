@@ -1,26 +1,32 @@
-<div class="container  space-1 space-2--lg js-fade">
-    <ul class="u-timeline">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
 
-        <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
-            <li class="u-timeline__item">
-                <div class="u-timeline__content {f:if(condition: '{timelineIteration.isOdd}', then: 'fade-in-right', else: 'fade-in-left')}">
-                    <div class="media">
-                        <div class="media-body">
-                            <f:format.html>{timeline.description}</f:format.html>
+<f:section name="Main">
+    <div class="container  space-1 space-2--lg js-fade">
+        <ul class="u-timeline">
+
+            <f:for each="{timelines}" as="timeline" iteration="timelineIteration">
+                <li class="u-timeline__item">
+                    <div class="u-timeline__content {f:if(condition: '{timelineIteration.isOdd}', then: 'fade-in-right', else: 'fade-in-left')}">
+                        <div class="media">
+                            <div class="media-body">
+                                <f:format.html>{timeline.description}</f:format.html>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="u-timeline__info fade-in-up">
-                    <f:for each="{timeline.image}" as="image" iteration="imageIteration">
-                        <f:if condition="{imageIteration.isFirst}">
-                            <f:image class="w-sm-50 w-lg-75 mx-lg-auto" image="{image}" width="300c" height="300c" />
-                        </f:if>
-                    </f:for>
-                </div>
-                <div class="u-timeline__spacer fade-in-up">
-                    <h2 class="h2">{timeline.title}</h2>
-                </div>
-            </li>
-        </f:for>
-    </ul>
-</div>
+                    <div class="u-timeline__info fade-in-up">
+                        <f:for each="{timeline.image}" as="image" iteration="imageIteration">
+                            <f:if condition="{imageIteration.isFirst}">
+                                <f:image class="w-sm-50 w-lg-75 mx-lg-auto" image="{image}" width="300c" height="300c" />
+                            </f:if>
+                        </f:for>
+                    </div>
+                    <div class="u-timeline__spacer fade-in-up">
+                        <h2 class="h2">{timeline.title}</h2>
+                    </div>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:section>
+</html>
