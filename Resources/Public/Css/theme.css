@@ -18942,6 +18942,21 @@ button:focus {
   transform: translate(-50%, -50%);
 }
 
+.content-header {
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+  .content-header {
+    padding-bottom: 4rem;
+  }
+}
+
+.content-header h1 {
+  line-height: 1 !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1), 1px -1px 0 rgba(0, 0, 0, 0.1), -1px 1px 0 rgba(0, 0, 0, 0.1), -1px -1px 0 rgba(0, 0, 0, 0.1), 1px 0px 0 rgba(0, 0, 0, 0.1), 0px 1px 0 rgba(0, 0, 0, 0.1), -1px 0px 0 rgba(0, 0, 0, 0.1), 0px -1px 0 rgba(0, 0, 0, 0.1), 1px 1px 1px rgba(255, 255, 255, 0);
+}
+
 /*------------------------------------
   Fill Colors
 ------------------------------------*/
@@ -19816,6 +19831,13 @@ button:focus {
 
 .frame-align-right {
   text-align: right;
+}
+
+@media (min-width: 992px) {
+  .px-lg-15 {
+    padding-left: 6rem !important;
+    padding-right: 6rem !important;
+  }
 }
 
 /*------------------------------------

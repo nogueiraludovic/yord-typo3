@@ -10,7 +10,9 @@
         <f:render partial="Structure/SecondaryHeader" arguments="{_all}" />
 
         <!--TYPO3SEARCH_begin-->
-        <f:format.raw>{header}</f:format.raw>
+        <div class="content-header">
+            <f:format.raw>{header}</f:format.raw>
+        </div>
 
         <f:format.raw>{content}</f:format.raw>
         <!--TYPO3SEARCH_end-->
