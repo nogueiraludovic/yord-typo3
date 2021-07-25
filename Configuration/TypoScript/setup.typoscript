@@ -94,12 +94,21 @@ plugin {
         mergedAssetsUseHashedFilename = 1
     }
 
-    tx_news.view {
-        partialRootPaths {
-            20 = EXT:yord/Resources/Private/Partials/Extensions/News
+    tx_news {
+        settings.detail.media {
+            image.maxWidth = 835
+            video {
+                height = 470
+                width = 835
+            }
         }
-        templateRootPaths {
-            20 = EXT:yord/Resources/Private/Templates/Extensions/News
+        view {
+            partialRootPaths {
+                20 = EXT:yord/Resources/Private/Partials/Extensions/News
+            }
+            templateRootPaths {
+                20 = EXT:yord/Resources/Private/Templates/Extensions/News
+            }
         }
     }
 
