@@ -19830,6 +19830,10 @@ button:focus {
   text-align: center;
 }
 
+.image-caption h6 {
+  margin: 6px 0 0;
+}
+
 .frame-align-right {
   text-align: right;
 }
