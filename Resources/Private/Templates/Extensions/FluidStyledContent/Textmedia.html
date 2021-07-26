@@ -24,7 +24,9 @@
                             <div class="container space-3 space-4-top--lg">
                                 <div class="w-md-50">
                                     <h1 class="display-4 font-size-48--md-down text-white">{data.header}</h1>
-                                    <p class="lead text-white">{data.subheader}</p>
+                                    <f:if condition="{data.subheader}">
+                                        <p class="lead text-white">{data.subheader}</p>
+                                    </f:if>
                                 </div>
                             </div>
                         </div>
