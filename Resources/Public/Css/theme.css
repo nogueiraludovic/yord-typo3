@@ -19839,7 +19839,7 @@ button:focus {
   text-align: right;
 }
 
-.frame:not(.frame-type-timeline):not(.frame-type-textmedia) {
+.frame:not(.frame-type-timeline):not(.frame-type-textmedia):not(.frame-type-list) {
   opacity: 0;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
