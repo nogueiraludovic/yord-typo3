@@ -3,7 +3,7 @@ page {
     10 = FLUIDTEMPLATE
     10 {
         layoutRootPaths {
-            10 = EXT:yord/Resources/Private/Layouts
+            10 = EXT:yord/Resources/Private/Layouts/Site
         }
         partialRootPaths {
             10 = EXT:yord/Resources/Private/Partials

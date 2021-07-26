@@ -19839,6 +19839,12 @@ button:focus {
   text-align: right;
 }
 
+.frame:not(.frame-type-timeline):not(.frame-type-textmedia) {
+  opacity: 0;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
 @media (min-width: 992px) {
   .px-lg-15 {
     padding-left: 6rem !important;
