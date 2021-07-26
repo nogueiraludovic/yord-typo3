@@ -20,7 +20,10 @@
         </f:else>
     </f:if>
     <f:if condition="{file.description}">
-        <figcaption class="image-caption">
+        <figcaption class="image-caption align-center">
+            <f:if condition="{data.layout} == 1">
+                <h6>{file.title}</h6>
+            </f:if>
             {file.description -> f:format.nl2br()}
         </figcaption>
     </f:if>

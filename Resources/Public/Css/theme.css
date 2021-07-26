@@ -19825,7 +19825,8 @@ button:focus {
   cursor: pointer;
 }
 
-.frame-align-center {
+.frame-align-center,
+.align-center {
   text-align: center;
 }
 

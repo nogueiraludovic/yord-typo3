@@ -36,6 +36,11 @@ TCEFORM {
         }
 
         layout.keepItems = 0
+
+        layout.types.image {
+            altLabels.1 = Equipe
+            keepItems = 0,1
+        }
     }
 
     tx_news_domain_model_news {
