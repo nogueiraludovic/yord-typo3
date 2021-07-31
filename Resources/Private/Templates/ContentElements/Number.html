@@ -4,6 +4,15 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
+    <f:if condition="{data.header}">
+        <div class="container space-1 space-2--lg">
+            <div class="row">
+                <div class="col-12 header">
+                    <h2 class="h3 text-center">{data.header}</h2>
+                </div>
+            </div>
+        </div>
+    </f:if>
 <f:if condition="{data.image}">
     <f:then>
     <f:for each="{vhs:content.resources.fal(uid: '{data.uid}', field: 'image')}" as="image" iteration="imageIterator">
@@ -17,13 +26,6 @@
     </f:else>
 </f:if>
     <div class="container">
-        <div class="row">
-            <f:if condition="{data.header}">
-                <div class="col-12 header">
-                    <h2 class="h3 text-center">{data.header}</h2>
-                </div>
-            </f:if>
-        </div>
         <div class="row row-number">
             <f:for each="{numbers}" as="number" iteration="numberIteration">
                 <div class="col-md-6 col-lg-3 col-12">
