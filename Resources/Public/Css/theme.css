@@ -18654,6 +18654,10 @@ button:focus {
   margin-bottom: 0;
 }
 
+.u-timeline p:last-child {
+  margin-bottom: 0;
+}
+
 .u-timeline__item {
   position: relative;
   display: flex;
