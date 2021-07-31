@@ -3,6 +3,13 @@
 
 <f:section name="Main">
 <div class="container space-1 space-3--lg numbers">
+    <div class="row">
+        <f:if condition="{data.header}">
+            <div class="col-12">
+                <h2 class="h3">{data.header}</h2>
+            </div>
+        </f:if>
+    </div>
     <div class="row row-number">
         <f:for each="{numbers}" as="number" iteration="numberIteration">
             <div class="col-md-3 col-12">
