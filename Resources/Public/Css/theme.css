@@ -18771,6 +18771,12 @@ button:focus {
   }
 }
 
+@media (min-width: 992px) {
+  .frame-type-number {
+    padding: 5rem 0 0;
+  }
+}
+
 .numbers {
   padding: 4rem 0;
 }
