@@ -1,25 +1,40 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 <f:section name="Main">
-<div class="container space-1 space-3--lg numbers">
-    <div class="row">
-        <f:if condition="{data.header}">
-            <div class="col-12 header">
-                <h2 class="h3 text-center">{data.header}</h2>
-            </div>
+<f:if condition="{data.image}">
+    <f:then>
+    <f:for each="{vhs:content.resources.fal(uid: '{data.uid}', field: 'image')}" as="image" iteration="imageIterator">
+        <f:if condition="{imageIterator.isFirst}">
+            <div class="numbers" style="background-image: url({f:uri.image(src: image.id, width: '1900c', height: '453c')});">
         </f:if>
-    </div>
-    <div class="row row-number">
-        <f:for each="{numbers}" as="number" iteration="numberIteration">
-            <div class="col-md-3 col-12">
-                <div class="text-center number">
-                    <i class="icon-presentation fa fa-{number.icon} mb-4"></i>
-                    <h3 class="h5 title">{number.title}</h3>
-                    <p class="mb-0 description"><f:format.raw>{number.description}</f:format.raw></p>
+    </f:for>
+    </f:then>
+    <f:else>
+        <div class="numbers">
+    </f:else>
+</f:if>
+    <div class="container">
+        <div class="row">
+            <f:if condition="{data.header}">
+                <div class="col-12 header">
+                    <h2 class="h3 text-center">{data.header}</h2>
                 </div>
-            </div>
-        </f:for>
+            </f:if>
+        </div>
+        <div class="row row-number">
+            <f:for each="{numbers}" as="number" iteration="numberIteration">
+                <div class="col-md-6 col-lg-3 col-12">
+                    <div class="text-center number">
+                        <i class="icon-presentation fa fa-{number.icon} mb-4"></i>
+                        <h3 class="h5 title">{number.title}</h3>
+                        <p class="mb-0 description"><f:format.raw>{number.description}</f:format.raw></p>
+                    </div>
+                </div>
+            </f:for>
+        </div>
     </div>
 </div>
 </f:section>
