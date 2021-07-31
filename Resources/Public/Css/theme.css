@@ -20459,3 +20459,6 @@ img {
 /*------------------------------------
   File for your custom SCSS style
 ------------------------------------*/
+.ce-textpic .ce-bodytext p:last-child {
+  margin-bottom: 0;
+}
