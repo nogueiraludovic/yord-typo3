@@ -2,16 +2,14 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-<div class="container space-1 space-2--lg">
+<div class="container space-1 space-3--lg numbers">
     <div class="row row-number">
         <f:for each="{numbers}" as="number" iteration="numberIteration">
-            <div class="col-md-6 mb-7 mb-md-0">
-                <div class="text-center px-lg-15">
-                    <f:comment>
-                    <i class="icon-presentation fab fa-{number.icon} mb-4"></i>
-                    </f:comment>
-                    <h3 class="h4">{number.title}</h3>
-                    <p class="mb-0">{number.description}</p>
+            <div class="col-md-3 col-12">
+                <div class="text-center number">
+                    <i class="icon-presentation fa fa-{number.icon} mb-4"></i>
+                    <h3 class="h5 title">{number.title}</h3>
+                    <p class="mb-0 description">{number.description}</p>
                 </div>
             </div>
         </f:for>

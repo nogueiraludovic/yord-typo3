@@ -18771,6 +18771,50 @@ button:focus {
   justify-content: center;
 }
 
+.row-number .number {
+  background: #fff;
+  position: relative;
+  transition: all .3s ease .2s;
+  z-index: 21;
+  padding: 20px 0 0;
+}
+
+.row-number .number .title {
+  margin: 0;
+  position: relative;
+  padding-bottom: 20px;
+  z-index: 21;
+  background: #fff;
+}
+
+.row-number .number .icon-presentation {
+  color: #4b8474;
+}
+
+@media (min-width: 768px) {
+  .row-number .number .description {
+    background: #fff;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 10px 15px;
+    left: 0;
+    transition: all .3s ease .2s;
+    z-index: 20;
+    top: calc(100% - 1px);
+  }
+  .row-number .number:hover, .row-number .number:active {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    transition: all .3s ease;
+  }
+  .row-number .number:hover .description, .row-number .number:active .description {
+    opacity: 1;
+    transition: all .3s ease;
+  }
+}
+
 /*------------------------------------
   Background Colors
 ------------------------------------*/
