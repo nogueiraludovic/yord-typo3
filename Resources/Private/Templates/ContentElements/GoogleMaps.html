@@ -2,24 +2,20 @@
 
 <div class="container space-1 space-2--lg">
     <div class="row">
-        <div class="col-lg-6 mb-7 mb-lg-0">
+        <div class="col-lg-3 mb-7 mb-lg-0">
             <f:if condition="{data.header}">
                 <h2 class="h4 mb-4">{data.header}</h2>
             </f:if>
 
             <div class="row">
-                <div class="col-sm-6 mb-4 mb-sm-0">
+                <div class="col-sm-12 mb-4 mb-sm-0">
                     <f:format.html>{data.bodytext}</f:format.html>
-                </div>
-
-                <div class="col-sm-6">
-                    <f:format.html>{data.right_column}</f:format.html>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-6">
-            <div id="GMap1" class="js-g-map embed-responsive embed-responsive-21by9 h-100" data-type="satellite" data-lat="46.7970537" data-lng="7.1480736" data-zoom="16" data-title="yord" data-pin="true" data-pin-icon="/typo3conf/ext/yord/Resources/Public/Images/map-marker1.png" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Petit problème... Une erreur s'est produite</div><div class="gm-err-message">Google&nbsp;Maps ne s'est pas chargé correctement sur cette page. Pour plus d'informations techniques sur cette erreur, veuillez consulter la console JavaScript.</div></div></div></div></div>
+        <div class="col-lg-9">
+            <div id="GMap1" class="js-g-map embed-responsive embed-responsive-21by9" data-type="satellite" data-lat="46.7970546" data-lng="7.1481196" data-zoom="16" data-title="yord" data-pin="true" data-pin-icon="/typo3conf/ext/yord/Resources/Public/Images/map-marker1.png" style="position: relative; overflow: hidden; height: 450px!important"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Petit problème... Une erreur s'est produite</div><div class="gm-err-message">Google&nbsp;Maps ne s'est pas chargé correctement sur cette page. Pour plus d'informations techniques sur cette erreur, veuillez consulter la console JavaScript.</div></div></div></div></div>
         </div>
     </div>
 </div>
