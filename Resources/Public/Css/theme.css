@@ -18767,6 +18767,10 @@ button:focus {
   }
 }
 
+.numbers .header {
+  margin: 0 0 30px;
+}
+
 .row-number {
   justify-content: center;
 }
