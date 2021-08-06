@@ -18668,9 +18668,15 @@ video {
   position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   margin-right: -.9375rem;
   margin-left: -.9375rem;
+}
+
+.u-timeline__item h2 {
+  text-align: center;
+  line-height: 1.2;
 }
 
 @media (min-width: 992px) {
@@ -18721,6 +18727,12 @@ video {
 
 .u-timeline__content, .u-timeline__info {
   width: calc(100% - 4rem);
+}
+
+@media (max-width: 1199.98px) {
+  .u-timeline__content, .u-timeline__info {
+    animation-name: fadeInTop;
+  }
 }
 
 .u-timeline__info, .u-timeline__spacer {
