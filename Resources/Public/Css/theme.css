@@ -17733,6 +17733,11 @@ button:focus {
 /*------------------------------------
   Video Player
 ------------------------------------*/
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 .u-video-player {
   position: relative;
   background-color: #000;
