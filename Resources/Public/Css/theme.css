@@ -12480,6 +12480,7 @@ button:focus {
 }
 
 .u-header__navbar-brand-mobile {
+  padding-bottom: 2px;
   width: auto;
 }
 
