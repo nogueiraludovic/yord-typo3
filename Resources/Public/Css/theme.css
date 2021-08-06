@@ -18731,7 +18731,7 @@ video {
 
 @media (max-width: 1199.98px) {
   .u-timeline__content, .u-timeline__info {
-    animation-name: fadeInTop;
+    animation-name: fadeInTop !important;
   }
 }
 
