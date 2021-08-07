@@ -18754,6 +18754,18 @@ video {
   padding-left: .9375rem;
 }
 
+@media (max-width: 1199.98px) {
+  .u-timeline__spacer {
+    order: 0;
+  }
+  .u-timeline__info {
+    order: 1;
+  }
+  .u-timeline__content {
+    order: 2;
+  }
+}
+
 .u-timeline__content {
   animation-delay: 0.3s;
 }
