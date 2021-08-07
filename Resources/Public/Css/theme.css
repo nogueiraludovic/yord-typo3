@@ -18756,10 +18756,10 @@ video {
 
 @media (max-width: 1199.98px) {
   .u-timeline__spacer {
-    order: 0;
+    order: 1;
   }
   .u-timeline__info {
-    order: 1;
+    order: 0;
   }
   .u-timeline__content {
     order: 2;
