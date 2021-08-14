@@ -3,17 +3,21 @@
 <footer class="bg-dark">
     <div class="container space-2">
         <div class="row justify-content-md-between">
-            <div class="col-6 col-md-3 col-lg-2 order-lg-3 mb-7 mb-lg-0">
+            <div class="col-6 col-md-3 col-lg-3 order-lg-3 mb-7 mb-lg-0">
                 <div class="list-group list-group-flush list-group-transparent">
+                    <p class="footer"><f:link.typolink parameter="info@yord.ch" class="list-group-item list-group-item-action">info@yord.ch</f:link.typolink> </p>
+                    <p class="list-group-item list-group-item-action address">Passage du Cardinal 11<br />
+                    1700 Fribourg</p>
+                    <f:comment>
                     <f:for each="{footer}" as="menu" iteration="menuIteration">
                         <f:link.typolink parameter="{menu.link}" target="{menu.target}" title="{menu.title}" class="list-group-item list-group-item-action">
                             {menu.title}
                         </f:link.typolink>
-                    </f:for>
+                    </f:for></f:comment>
                 </div>
             </div>
 
-            <div class="col-6 offset-md-6 offset-lg-4 col-md-3 col-lg-2 order-lg-6 mb-7 mb-lg-0">
+            <div class="col-6 offset-md-6 offset-lg-3 col-md-3 col-lg-2 order-lg-6 mb-7 mb-lg-0">
 
                 <div class="list-group list-group-flush list-group-transparent">
                     <f:if condition="{settings.socials.facebook}">
