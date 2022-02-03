@@ -5005,6 +5005,9 @@ input[type="button"].btn-block {
     margin-right: -15px;
     margin-left: -15px;
   }
+  .card-deck a {
+    width: 50%;
+  }
   .card-deck .card {
     flex: 1 0 0%;
     margin-right: 15px;

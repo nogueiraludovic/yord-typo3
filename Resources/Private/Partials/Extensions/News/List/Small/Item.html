@@ -9,7 +9,9 @@
                 <h2 class="h5 mb-3">
                     {newsItem.title}
                 </h2>
-                <f:format.raw>{newsItem.teaser}</f:format.raw>
+                <f:format.crop maxCharacters="60">
+                    <f:format.raw>{newsItem.teaser}</f:format.raw>
+                </f:format.crop>
             </div>
         </div>
         <f:if condition="{newsItem.falMedia}">
