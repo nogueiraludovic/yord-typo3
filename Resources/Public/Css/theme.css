@@ -5009,6 +5009,7 @@ input[type="button"].btn-block {
     width: 50%;
   }
   .card-deck .card {
+    height: 100%;
     flex: 1 0 0%;
     margin-right: 15px;
     margin-bottom: 0;
