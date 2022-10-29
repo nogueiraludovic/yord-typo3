@@ -73,6 +73,34 @@ body {
   outline: 0 !important;
 }
 
+.news-listing {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-listing a {
+  width: calc(33.3333% - 10px);
+  margin: 0 5px;
+}
+
+.news-listing article {
+  min-height: 500px;
+}
+
+@media (max-width: 992px) {
+  .news-listing a {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 767px) {
+  .news-listing a {
+    width: 100%;
+    margin: 0;
+    max-width: 400px;
+  }
+}
+
 hr {
   box-sizing: content-box;
   height: 0;

@@ -8,7 +8,7 @@
         </div>
     </f:if>
 
-    <div class="card-mb card-sm-columns card-sm-3-count">
+    <div class="card-mb news-listing">
         <f:for each="{news}" as="newsItem" iteration="iterator">
             <f:render partial="List/Default/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
         </f:for>
