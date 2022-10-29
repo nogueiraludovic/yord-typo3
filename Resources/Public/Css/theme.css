@@ -76,6 +76,7 @@ body {
 .news-listing {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .news-listing a {
