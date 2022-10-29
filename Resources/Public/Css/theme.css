@@ -18817,6 +18817,8 @@ video {
 
 .numbers {
   padding: 4rem 0;
+  background-size: cover;
+  background-position: center;
 }
 
 @media (max-width: 991.98px) {
