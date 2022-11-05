@@ -21,6 +21,9 @@
     bottom: 0;
     left: 0;
     opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all .3s ease;
 }
 .frame-type-image.frame-layout-1 .description-hover:hover {
