@@ -35,3 +35,14 @@
     opacity: 1;
     transition: all .3s ease;
 }
+
+@media (max-width: 767px) {
+    .frame-type-image.frame-layout-1 .ce-row {
+        flex-wrap: wrap;
+    }
+
+    .frame-type-image.frame-layout-1 .ce-column {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
