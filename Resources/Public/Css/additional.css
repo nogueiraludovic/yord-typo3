@@ -9,3 +9,22 @@
 .footer > a:last-child {
     padding-top: 0;
 }
+
+.frame-type-image.frame-layout-1 .image-container {
+    position: relative;
+}
+
+.frame-type-image.frame-layout-1 .description-hover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: all .3s ease;
+}
+.frame-type-image.frame-layout-1 .description-hover:hover {
+    background: rgba(47, 83, 73, 0.7);
+    opacity: 1;
+    transition: all .2s ease;
+}
